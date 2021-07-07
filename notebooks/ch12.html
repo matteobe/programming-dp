@@ -241,7 +241,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/notebooks/ch12.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/uvm-plaid/programming-dp/master?urlpath=tree/notebooks/ch12.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -375,14 +375,14 @@ training set containing 80% of the examples, and a testing set containing
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:763: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/sklearn/linear_model/_logistic.py:764: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
     https://scikit-learn.org/stable/modules/preprocessing.html
 Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression()
@@ -427,8 +427,8 @@ set. For this dataset, that’s a pretty decent result.</p>
 <h2>What is a Model?<a class="headerlink" href="#what-is-a-model" title="Permalink to this headline">¶</a></h2>
 <p>What exactly <em>is</em> a model? How does it encode the information it uses to make predictions?</p>
 <p>There are many different kinds of models, but the ones we’ll explore here are <em>linear models</em>. For an unlabeled example with a <span class="math notranslate nohighlight">\(k\)</span>-dimensional feature vector <span class="math notranslate nohighlight">\(x_1, \dots, x_k\)</span>, a linear model predicts a label by first calculating the quantity:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-281abd0c-49ad-4521-886a-1fbba2e93323">
-<span class="eqno">(32)<a class="headerlink" href="#equation-281abd0c-49ad-4521-886a-1fbba2e93323" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9018ec29-242c-454d-86aa-8fe5136ebeda">
+<span class="eqno">(33)<a class="headerlink" href="#equation-9018ec29-242c-454d-86aa-8fe5136ebeda" title="Permalink to this equation">¶</a></span>\[\begin{align}
 w_1 x_1 + \dots + w_k x_k + bias
 \end{align}\]</div>
 <p>and then taking the sign of it (i.e. if the quantity above is negative, we predict the label -1; if it’s positive, we predict 1).</p>
@@ -441,33 +441,33 @@ w_1 x_1 + \dots + w_k x_k + bias
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-4.68702466174862,
- array([ 4.78077055e-01, -1.80007629e-01, -3.40458658e-02,  6.83584640e-02,
-        -5.91070675e-01, -3.66122723e-01, -1.06080355e+00, -6.69783046e-01,
-        -6.36928771e-01, -4.60647959e-01, -5.10701262e-01, -3.97867097e-01,
-        -7.57665546e-01, -7.81363914e-01,  6.35702419e-02,  1.18057871e-01,
-         5.10728334e-01,  1.00309917e+00, -1.12310608e-01,  7.38203695e-01,
-        -1.18430990e+00,  1.28200266e+00,  1.10301206e-01, -8.97932189e-01,
-         1.50200539e+00,  1.25184882e+00, -5.83494287e-01, -1.31385731e+00,
-        -8.89764346e-01, -7.54421005e-01, -5.67575789e-02,  5.14312594e-02,
-        -8.42608339e-04,  7.21827850e-01, -8.96526672e-01, -6.94297776e-01,
-        -3.23895233e-01, -9.41100517e-01, -1.09697347e+00,  4.72840297e-01,
-         4.76942521e-01,  2.21512765e-01,  5.09502875e-01, -1.29278639e-01,
-        -3.74258577e-01,  1.75025818e-03, -7.74235447e-01, -1.05103256e+00,
-        -1.90727973e-01,  7.02889366e-01, -5.02496092e-01, -4.51888539e-02,
-        -4.88173665e-01, -4.18119930e-01, -2.31636387e-01, -1.17537353e+00,
-        -5.10241395e-01,  8.94550123e-01,  6.12523858e-01, -2.84255754e-01,
-        -1.27129961e+00,  1.13950224e-01, -4.79640131e-01, -2.56525725e-01,
-        -1.84748552e-01,  6.39646166e-01,  8.82887117e-01,  1.58086040e-02,
-         4.91377678e-02,  5.37999565e-02,  4.10196409e-01, -1.64973247e-02,
-         7.53121108e-02, -2.71846617e-01,  5.79536557e-01,  1.69181314e-02,
-         2.56133218e-01,  7.50842334e-01,  7.69278949e-01,  2.66360842e-01,
-        -8.56168250e-02, -7.43800756e-01, -5.85182994e-01, -3.65813941e-01,
-        -3.50545457e-01, -5.71008396e-01,  2.68338314e-01,  3.62248777e-02,
-         3.74293318e-01, -2.17785523e-01, -9.50689655e-01, -6.53129042e-01,
-        -1.22548388e-01, -6.43249365e-01, -4.87911153e-01,  3.02747146e-01,
-        -9.45931198e-01,  4.33925455e-01,  2.26092258e+00,  1.02676108e+00,
-         1.99427900e+00,  1.86493024e+01,  2.57237212e+00,  2.74275881e+00]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-4.687494808296503,
+ array([ 4.78151402e-01, -1.79946560e-01, -3.40197349e-02,  6.84333672e-02,
+        -5.91019524e-01, -3.66108816e-01, -1.06083809e+00, -6.69743294e-01,
+        -6.36890752e-01, -4.60617087e-01, -5.10608667e-01, -3.97831947e-01,
+        -7.57649836e-01, -7.81272015e-01,  6.35777397e-02,  1.18068922e-01,
+         5.10750239e-01,  1.00307253e+00, -1.12279697e-01,  7.38197172e-01,
+        -1.18445857e+00,  1.28199942e+00,  1.10337885e-01, -8.97895478e-01,
+         1.50203742e+00,  1.25195060e+00, -5.83470231e-01, -1.31379638e+00,
+        -8.89744944e-01, -7.54428949e-01, -5.67430807e-02,  5.14509637e-02,
+        -8.09102276e-04,  7.21854816e-01, -8.96542996e-01, -6.94307624e-01,
+        -3.23897853e-01, -9.41105845e-01, -1.09690696e+00,  4.72871112e-01,
+         4.76952664e-01,  2.21555807e-01,  5.09558194e-01, -1.29278056e-01,
+        -3.74282557e-01,  1.79888307e-03, -7.74198378e-01, -1.05095873e+00,
+        -1.90659465e-01,  7.02952290e-01, -5.02465565e-01, -4.51128322e-02,
+        -4.88109602e-01, -4.18059124e-01, -2.31600833e-01, -1.17527069e+00,
+        -5.10077268e-01,  8.94580565e-01,  6.12561880e-01, -2.84251847e-01,
+        -1.27129514e+00,  1.13972192e-01, -4.79608688e-01, -2.56511008e-01,
+        -1.84742616e-01,  6.39721203e-01,  8.82889803e-01,  1.58593881e-02,
+         4.91341902e-02,  5.38276653e-02,  4.10230750e-01, -1.65001343e-02,
+         7.53336836e-02, -2.71862104e-01,  5.79575869e-01,  1.69530872e-02,
+         2.56130094e-01,  7.50868301e-01,  7.69366256e-01,  2.66356240e-01,
+        -8.56150529e-02, -7.43867191e-01, -5.85226442e-01, -3.65805377e-01,
+        -3.50569198e-01, -5.70995791e-01,  2.68340650e-01,  3.62045343e-02,
+         3.74297699e-01, -2.17805065e-01, -9.50762561e-01, -6.53157410e-01,
+        -1.22539620e-01, -6.43291000e-01, -4.87931223e-01,  3.02749214e-01,
+        -9.45920882e-01,  4.33957129e-01,  2.26093232e+00,  1.02666008e+00,
+         1.99440344e+00,  1.86494843e+01,  2.57234729e+00,  2.74280072e+00]))
 </pre></div>
 </div>
 </div>
@@ -768,13 +768,13 @@ Testing loss: 0.4723742456095848
 <div class="section" id="gradient-clipping">
 <h3>Gradient Clipping<a class="headerlink" href="#gradient-clipping" title="Permalink to this headline">¶</a></h3>
 <p>Recall that when we implemented sample and aggregate, we enforced a desired sensitivity on a function <span class="math notranslate nohighlight">\(f\)</span> with unknown sensitivity by clipping its output. The sensitivity of <span class="math notranslate nohighlight">\(f\)</span> was:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9b3c0cd-eff2-4d1a-ab65-c038b7e2cffc">
-<span class="eqno">(33)<a class="headerlink" href="#equation-f9b3c0cd-eff2-4d1a-ab65-c038b7e2cffc" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-851aa062-2b13-4fdd-ba7d-c27ca79cab00">
+<span class="eqno">(34)<a class="headerlink" href="#equation-851aa062-2b13-4fdd-ba7d-c27ca79cab00" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lvert f(x) - f(x') \rvert
 \end{align}\]</div>
 <p>After clipping with parameter <span class="math notranslate nohighlight">\(b\)</span>, this becomes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c7fd4b3b-7a91-46eb-9652-02ab736169d7">
-<span class="eqno">(34)<a class="headerlink" href="#equation-c7fd4b3b-7a91-46eb-9652-02ab736169d7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eae427e7-2203-4d14-ae1e-d66f51f0876f">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eae427e7-2203-4d14-ae1e-d66f51f0876f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lvert \mathsf{clip}(f(x), b) - \mathsf{clip}(f(x'),b) \rvert
 \end{align}\]</div>
 <p>In the worst case, <span class="math notranslate nohighlight">\(\mathsf{clip}(f(x), b) = b\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{clip}(f(x'),b) = 0\)</span>, so the sensitivity of the clipped result is exactly <span class="math notranslate nohighlight">\(b\)</span> (the value of the clipping parameter).</p>
@@ -793,8 +793,8 @@ Testing loss: 0.4723742456095848
 </div>
 </div>
 <p>Now we’re ready to analyze the sensitivity of the clipped gradient. We denote the gradient as <span class="math notranslate nohighlight">\(\nabla(\theta; X, y)\)</span> (corresponding to <code class="docutils literal notranslate"><span class="pre">gradient</span></code> in our Python code):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a4894df-6b9a-4eba-930b-e4eec9499139">
-<span class="eqno">(35)<a class="headerlink" href="#equation-1a4894df-6b9a-4eba-930b-e4eec9499139" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-540f0683-8096-40cb-ba4f-49c62fc9d9fb">
+<span class="eqno">(36)<a class="headerlink" href="#equation-540f0683-8096-40cb-ba4f-49c62fc9d9fb" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lVert \mathsf{L2\_clip}( \nabla (\theta; X, y), b) - \mathsf{L2\_clip}( \nabla (\theta; X', y)) \rVert_2
 \end{align}\]</div>
 <p>In the worst case, <span class="math notranslate nohighlight">\(\mathsf{L2\_clip}( \nabla (\theta; X, y), b)\)</span> has L2 norm of <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{L2\_clip}( \nabla (\theta; X', y))\)</span> is all zeros - so that the L2 norm of the difference is equal to <span class="math notranslate nohighlight">\(b\)</span>. Thus, the L2 sensitivity of the clipped gradient is bounded by the clipping parameter <span class="math notranslate nohighlight">\(b\)</span>!</p>
@@ -844,7 +844,7 @@ Testing loss: 0.4723742456095848
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7801857585139319
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7806280406899602
 </pre></div>
 </div>
 </div>
@@ -854,8 +854,8 @@ Testing loss: 0.4723742456095848
 <div class="section" id="sensitivity-of-the-gradient">
 <h3>Sensitivity of the Gradient<a class="headerlink" href="#sensitivity-of-the-gradient" title="Permalink to this headline">¶</a></h3>
 <p>Our previous approach is very general, since it makes no assumptions about the behavior of the gradient. Sometimes, however, we <em>do</em> know something about the behavior of the gradient. In particular, a large class of useful gradient functions (including the gradient of the logistic loss, which we’re using here) are <em>Lipschitz continuous</em> - meaning they have bounded global sensitivity. Formally, it is possible to show that:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f8657122-4566-4ca9-9ae6-9fc83db4ba60">
-<span class="eqno">(36)<a class="headerlink" href="#equation-f8657122-4566-4ca9-9ae6-9fc83db4ba60" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-73ad1b25-dc61-445d-9fd2-d535f8c98b47">
+<span class="eqno">(37)<a class="headerlink" href="#equation-73ad1b25-dc61-445d-9fd2-d535f8c98b47" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{If}\; \lVert x_i \rVert_2 \leq b\; \text{then}\; \lVert \nabla(\theta; x_i, y_i) \rVert_2 \leq b
 \end{align}\]</div>
 <p>This fact allows us to clip the values of the <em>training examples</em> (i.e. the <em>inputs</em> to the gradient function), instead of the <em>output</em> of the gradient function, and obtain a bound on the L2 sensitivity of the gradient.</p>
@@ -902,7 +902,7 @@ Testing loss: 0.4723742456095848
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7804068996019461
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7859354268022999
 </pre></div>
 </div>
 </div>

@@ -241,7 +241,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/notebooks/ch13.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/uvm-plaid/programming-dp/master?urlpath=tree/notebooks/ch13.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -338,8 +338,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True     150
-False     50
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True     151
+False     49
 dtype: int64
 </pre></div>
 </div>
@@ -361,8 +361,8 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    22516
-True     10045
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    22550
+True     10011
 dtype: int64
 </pre></div>
 </div>
@@ -418,7 +418,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3821.5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3895.5
 </pre></div>
 </div>
 </div>
@@ -444,7 +444,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.698630136986302
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.726027397260275
 </pre></div>
 </div>
 </div>
@@ -458,7 +458,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0022015628790242074
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04878385504333929
 </pre></div>
 </div>
 </div>
@@ -545,14 +545,14 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Based on the values of <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, we can calculate the value of the privacy parameter <span class="math notranslate nohighlight">\(\epsilon\)</span>. For <span class="math notranslate nohighlight">\(p=.75\)</span> and <span class="math notranslate nohighlight">\(q=.25\)</span>, we will see an <span class="math notranslate nohighlight">\(\epsilon\)</span> of slightly more than 2.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0fbae34a-5f46-47e0-ae1d-07daea710042">
-<span class="eqno">(37)<a class="headerlink" href="#equation-0fbae34a-5f46-47e0-ae1d-07daea710042" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-46afd31d-c62f-4025-afca-93ef0391399b">
+<span class="eqno">(38)<a class="headerlink" href="#equation-46afd31d-c62f-4025-afca-93ef0391399b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon = \log{\Big(\frac{p (1-q)}{(1-p) q}\Big)}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -606,27 +606,27 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Adm-clerical&#39;, 10099),
- (&#39;Exec-managerial&#39;, 10031),
- (&#39;Handlers-cleaners&#39;, 8691),
- (&#39;Prof-specialty&#39;, 10319),
- (&#39;Other-service&#39;, 9770),
- (&#39;Sales&#39;, 10091),
- (&#39;Craft-repair&#39;, 10341),
- (&#39;Transport-moving&#39;, 8930),
- (&#39;Farming-fishing&#39;, 8621),
- (&#39;Machine-op-inspct&#39;, 9185),
- (&#39;Tech-support&#39;, 8562),
- (&#39;Protective-serv&#39;, 8458),
- (&#39;Armed-Forces&#39;, 8120),
- (&#39;Priv-house-serv&#39;, 8107)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Adm-clerical&#39;, 10036),
+ (&#39;Exec-managerial&#39;, 10227),
+ (&#39;Handlers-cleaners&#39;, 8815),
+ (&#39;Prof-specialty&#39;, 10160),
+ (&#39;Other-service&#39;, 10017),
+ (&#39;Sales&#39;, 10073),
+ (&#39;Craft-repair&#39;, 10250),
+ (&#39;Transport-moving&#39;, 8977),
+ (&#39;Farming-fishing&#39;, 8722),
+ (&#39;Machine-op-inspct&#39;, 9203),
+ (&#39;Tech-support&#39;, 8674),
+ (&#39;Protective-serv&#39;, 8374),
+ (&#39;Armed-Forces&#39;, 8109),
+ (&#39;Priv-house-serv&#39;, 8286)]
 </pre></div>
 </div>
 </div>
 </div>
 <p>The aggregate step of the unary encoding algorithm takes into account the number of “fake” responses in each category, which is a function of both <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, and the number of responses <span class="math notranslate nohighlight">\(n\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b23b0026-ed8c-4bf1-b628-f053abe97d45">
-<span class="eqno">(38)<a class="headerlink" href="#equation-b23b0026-ed8c-4bf1-b628-f053abe97d45" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d6b770de-f16e-4123-b2bc-feeebd0e95aa">
+<span class="eqno">(39)<a class="headerlink" href="#equation-d6b770de-f16e-4123-b2bc-feeebd0e95aa" title="Permalink to this equation">¶</a></span>\[\begin{align}
 A[i] = \frac{\sum_j B'_j[i] - n q}{p - q}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -652,20 +652,20 @@ A[i] = \frac{\sum_j B'_j[i] - n q}{p - q}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Adm-clerical&#39;, 3705.5),
- (&#39;Exec-managerial&#39;, 4125.5),
- (&#39;Handlers-cleaners&#39;, 1615.5),
- (&#39;Prof-specialty&#39;, 4421.5),
- (&#39;Other-service&#39;, 2991.5),
- (&#39;Sales&#39;, 3795.5),
- (&#39;Craft-repair&#39;, 3967.5),
- (&#39;Transport-moving&#39;, 1595.5),
- (&#39;Farming-fishing&#39;, 883.5),
- (&#39;Machine-op-inspct&#39;, 2183.5),
- (&#39;Tech-support&#39;, 1203.5),
- (&#39;Protective-serv&#39;, 479.5),
- (&#39;Armed-Forces&#39;, -240.5),
- (&#39;Priv-house-serv&#39;, -284.5)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Adm-clerical&#39;, 3903.5),
+ (&#39;Exec-managerial&#39;, 4139.5),
+ (&#39;Handlers-cleaners&#39;, 1411.5),
+ (&#39;Prof-specialty&#39;, 4111.5),
+ (&#39;Other-service&#39;, 3197.5),
+ (&#39;Sales&#39;, 3695.5),
+ (&#39;Craft-repair&#39;, 4031.5),
+ (&#39;Transport-moving&#39;, 1593.5),
+ (&#39;Farming-fishing&#39;, 1081.5),
+ (&#39;Machine-op-inspct&#39;, 1839.5),
+ (&#39;Tech-support&#39;, 975.5),
+ (&#39;Protective-serv&#39;, 693.5),
+ (&#39;Armed-Forces&#39;, 95.5),
+ (&#39;Priv-house-serv&#39;, 43.5)]
 </pre></div>
 </div>
 </div>

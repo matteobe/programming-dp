@@ -241,7 +241,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/notebooks/ch14.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/uvm-plaid/programming-dp/master?urlpath=tree/notebooks/ch14.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -394,7 +394,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9878.94615775263
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9873.760597398521
 </pre></div>
 </div>
 </div>
@@ -409,8 +409,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.05252849905088225
-Laplace mechanism error: 0.17367416802090183
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.015590351971562158
+Laplace mechanism error: 0.016170348770263573
 </pre></div>
 </div>
 </div>
@@ -425,8 +425,8 @@ Laplace mechanism error: 0.17367416802090183
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.017752560267603034
-Laplace mechanism error: 0.00018029839838645202
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.05059458829227597
+Laplace mechanism error: 0.000996945306403398
 </pre></div>
 </div>
 </div>
@@ -446,7 +446,7 @@ Laplace mechanism error: 0.00018029839838645202
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999999999998
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
 </div>
@@ -500,23 +500,23 @@ Laplace mechanism error: 0.00018029839838645202
   <tbody>
     <tr>
       <th>0</th>
-      <td>45</td>
+      <td>57</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>53</td>
+      <td>31</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>22</td>
+      <td>33</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>48</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>61</td>
+      <td>44</td>
     </tr>
   </tbody>
 </table>
@@ -546,9 +546,9 @@ Laplace mechanism error: 0.00018029839838645202
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 38.7421
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 38.6468
 Mean age, true answer: 38.58164675532078
-Percent error: 0.4141573241492271
+Percent error: 0.16858638924624036
 </pre></div>
 </div>
 </div>
@@ -563,15 +563,13 @@ Percent error: 0.4141573241492271
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 9107
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 9131
 Mean age, true answer: 29568
-Percent error: 69.19981060606061
+Percent error: 69.11864177489177
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-2-bef15ba552d4&gt;:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  return len(df[(df[col] &gt;= a) &amp; (adult[col] &lt; b)])
-&lt;ipython-input-2-bef15ba552d4&gt;:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  return len(df[(df[col] &gt;= a) &amp; (adult[col] &lt; b)])
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/ipykernel_launcher.py:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  
 </pre></div>
 </div>
 </div>
@@ -590,9 +588,17 @@ Percent error: 69.19981060606061
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 29650
-Mean age, true answer: 29568
-Percent error: 0.27732683982683987
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 29569
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/ipykernel_launcher.py:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, true answer: 29568
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent error: 0.003382034632034632
 </pre></div>
 </div>
 </div>
@@ -766,7 +772,7 @@ Percent error: 0.27732683982683987
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((17, &#39;Adm-clerical&#39;), 0.0007437178496643495)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((17, &#39;Adm-clerical&#39;), 0.0007094711379204649)
 </pre></div>
 </div>
 </div>
@@ -810,28 +816,28 @@ Percent error: 0.27732683982683987
   <tbody>
     <tr>
       <th>0</th>
-      <td>20</td>
-      <td>Adm-clerical</td>
+      <td>47</td>
+      <td>Prof-specialty</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>63</td>
+      <td>51</td>
       <td>Farming-fishing</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>18</td>
-      <td>Sales</td>
+      <td>27</td>
+      <td>Adm-clerical</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>29</td>
-      <td>Sales</td>
+      <td>61</td>
+      <td>Farming-fishing</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>41</td>
-      <td>Exec-managerial</td>
+      <td>21</td>
+      <td>Adm-clerical</td>
     </tr>
   </tbody>
 </table>
@@ -860,11 +866,11 @@ Percent error: 0.27732683982683987
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent error using synthetic data: 15.396076483734792
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent error using synthetic data: 15.346411720884031
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-2-bef15ba552d4&gt;:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  return len(df[(df[col] &gt;= a) &amp; (adult[col] &lt; b)])
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/ipykernel_launcher.py:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  
 </pre></div>
 </div>
 </div>
