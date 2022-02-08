@@ -322,7 +322,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">range_query</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">adult</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)])</span>
 
 <span class="n">range_query</span><span class="p">(</span><span class="n">adult</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
 </pre></div>
@@ -394,7 +394,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9873.760597398521
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9890.777533558647
 </pre></div>
 </div>
 </div>
@@ -409,8 +409,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.015590351971562158
-Laplace mechanism error: 0.016170348770263573
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.14635478171517372
+Laplace mechanism error: 0.16032423312991054
 </pre></div>
 </div>
 </div>
@@ -425,8 +425,8 @@ Laplace mechanism error: 0.016170348770263573
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.05059458829227597
-Laplace mechanism error: 0.000996945306403398
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic representation error: 0.01801920293346215
+Laplace mechanism error: 0.004834891272985227
 </pre></div>
 </div>
 </div>
@@ -500,23 +500,23 @@ Laplace mechanism error: 0.000996945306403398
   <tbody>
     <tr>
       <th>0</th>
-      <td>57</td>
+      <td>45</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>31</td>
+      <td>18</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>33</td>
+      <td>48</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>21</td>
+      <td>58</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>44</td>
+      <td>23</td>
     </tr>
   </tbody>
 </table>
@@ -546,9 +546,9 @@ Laplace mechanism error: 0.000996945306403398
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 38.6468
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 38.5825
 Mean age, true answer: 38.58164675532078
-Percent error: 0.16858638924624036
+Percent error: 0.0022114810580449967
 </pre></div>
 </div>
 </div>
@@ -563,13 +563,9 @@ Percent error: 0.16858638924624036
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 9131
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 9073
 Mean age, true answer: 29568
-Percent error: 69.11864177489177
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/ipykernel_launcher.py:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  
+Percent error: 69.31479978354979
 </pre></div>
 </div>
 </div>
@@ -588,17 +584,9 @@ Percent error: 69.11864177489177
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 29569
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/ipykernel_launcher.py:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, true answer: 29568
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent error: 0.003382034632034632
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean age, synthetic: 29662
+Mean age, true answer: 29568
+Percent error: 0.3179112554112554
 </pre></div>
 </div>
 </div>
@@ -772,7 +760,7 @@ Percent error: 69.11864177489177
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((17, &#39;Adm-clerical&#39;), 0.0007094711379204649)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((17, &#39;Adm-clerical&#39;), 0.0007852600946548487)
 </pre></div>
 </div>
 </div>
@@ -816,28 +804,28 @@ Percent error: 69.11864177489177
   <tbody>
     <tr>
       <th>0</th>
-      <td>47</td>
-      <td>Prof-specialty</td>
+      <td>32</td>
+      <td>Craft-repair</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>51</td>
-      <td>Farming-fishing</td>
+      <td>53</td>
+      <td>Exec-managerial</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>27</td>
-      <td>Adm-clerical</td>
+      <td>20</td>
+      <td>Handlers-cleaners</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>61</td>
-      <td>Farming-fishing</td>
+      <td>36</td>
+      <td>Other-service</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>21</td>
-      <td>Adm-clerical</td>
+      <td>43</td>
+      <td>Prof-specialty</td>
     </tr>
   </tbody>
 </table>
@@ -866,11 +854,7 @@ Percent error: 69.11864177489177
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent error using synthetic data: 15.346411720884031
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/ipykernel_launcher.py:2: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent error using synthetic data: 0.9312143034517011
 </pre></div>
 </div>
 </div>
