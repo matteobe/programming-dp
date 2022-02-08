@@ -264,6 +264,11 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-approximate-differential-privacy">
+   Properties of Approximate Differential Privacy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-gaussian-mechanism">
    The Gaussian Mechanism
   </a>
@@ -331,8 +336,8 @@
 </ul>
 </div>
 <p>Approximate differential privacy <span id="id1">[<a class="reference internal" href="bibliography.html#id5"><span>5</span></a>]</span>, also called <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differential privacy, has the following definition:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01a08570-fad6-4c8a-9b68-8d3f4a2fdb6b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-01a08570-fad6-4c8a-9b68-8d3f4a2fdb6b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-88f8e194-868e-4022-a9a5-e66a749c2cec">
+<span class="eqno">(6)<a class="headerlink" href="#equation-88f8e194-868e-4022-a9a5-e66a749c2cec" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathsf{Pr}[F(x) = S] \leq e^\epsilon \mathsf{Pr}[F(x') = s] + \delta
 \end{align}\]</div>
 <p>The new privacy parameter, <span class="math notranslate nohighlight">\(\delta\)</span>, represents a “failure probability” for the definition. With probability <span class="math notranslate nohighlight">\(1-\delta\)</span>, we will get the same guarantee as pure differential privacy; with probability <span class="math notranslate nohighlight">\(\delta\)</span>, we get no guarantee. In other words:</p>
@@ -342,11 +347,21 @@
 </ul>
 <p>This definition should seem a little bit scary! With probability <span class="math notranslate nohighlight">\(\delta\)</span>, anything at all could happen - including a release of the entire sensitive dataset! For this reason, we typically require <span class="math notranslate nohighlight">\(\delta\)</span> to be very small - usually <span class="math notranslate nohighlight">\(\frac{1}{n^2}\)</span> or less, where <span class="math notranslate nohighlight">\(n\)</span> is the size of the dataset. In addition, we’ll see that the <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differentially private mechanisms in practial use don’t fail catastrophically, as allowed by the definition - instead, they fail <em>gracefully</em>, and don’t do terrible things like releasing the entire dataset.</p>
 <p>Such mechanisms <em>are</em> possible, however, and they do satisfy the definition of <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differential privacy. We’ll see an example of such a mechanism later in this section.</p>
+<div class="section" id="properties-of-approximate-differential-privacy">
+<h2>Properties of Approximate Differential Privacy<a class="headerlink" href="#properties-of-approximate-differential-privacy" title="Permalink to this headline">¶</a></h2>
+<p>Approximate differential privacy has similar properties to pure <span class="math notranslate nohighlight">\(\epsilon\)</span>-differential privacy. It satisfies <strong>sequential composition</strong>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(F_1(x)\)</span> satisfies <span class="math notranslate nohighlight">\((\epsilon_1, \delta_1)\)</span>-differential privacy</p></li>
+<li><p>And <span class="math notranslate nohighlight">\(F_2(x)\)</span> satisfies <span class="math notranslate nohighlight">\((\epsilon_2, \delta_2)\)</span>-differential privacy</p></li>
+<li><p>Then the mechanism <span class="math notranslate nohighlight">\(G(x) = (F_1(x), F_2(x))\)</span> which releases both results satisfies <span class="math notranslate nohighlight">\((\epsilon_1+\epsilon_2, \delta_1 + \delta_2)\)</span>-differential privacy</p></li>
+</ul>
+<p>The only difference from the pure <span class="math notranslate nohighlight">\(\epsilon\)</span> setting is that we add up the <span class="math notranslate nohighlight">\(\delta\)</span>s as well as the <span class="math notranslate nohighlight">\(\epsilon\)</span>s. Approximate differential privacy also satisfies post-processing and parallel composition.</p>
+</div>
 <div class="section" id="the-gaussian-mechanism">
 <h2>The Gaussian Mechanism<a class="headerlink" href="#the-gaussian-mechanism" title="Permalink to this headline">¶</a></h2>
 <p>The Gaussian mechanism is an alternative to the Laplace mechanism, which adds Gaussian noise instead of Laplacian noise. The Gaussian mechanism does <em>not</em> satisfy pure <span class="math notranslate nohighlight">\(\epsilon\)</span>-differential privacy, but does satisfy <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differential privacy. According to the Gaussian mechanism, for a function <span class="math notranslate nohighlight">\(f(x)\)</span> which returns a number, the following definition of <span class="math notranslate nohighlight">\(F(x)\)</span> satisfies <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differential privacy:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29e9cead-611a-4602-966e-a5e18be66fea">
-<span class="eqno">(7)<a class="headerlink" href="#equation-29e9cead-611a-4602-966e-a5e18be66fea" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0c31c022-4f48-4d01-8d58-1a033de84418">
+<span class="eqno">(7)<a class="headerlink" href="#equation-0c31c022-4f48-4d01-8d58-1a033de84418" title="Permalink to this equation">¶</a></span>\[\begin{align}
 F(x) = f(x) + \mathcal{N}(\sigma^2)\\
 \text{where } \sigma^2 = \frac{2s^2 \log(1.25/\delta)}{\epsilon^2}
 \end{align}\]</div>
@@ -368,7 +383,7 @@ F(x) = f(x) + \mathcal{N}(\sigma^2)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ch6_4_0.png" src="../_images/ch6_4_0.png" />
+<img alt="../_images/ch6_5_0.png" src="../_images/ch6_5_0.png" />
 </div>
 </div>
 <p>Here, we graph the empirical probability density function of the Laplace and Gaussian mechanisms for <span class="math notranslate nohighlight">\(\epsilon = 1\)</span>, with <span class="math notranslate nohighlight">\(\delta = 10^{-5}\)</span> for the Gaussian mechanism.</p>
@@ -379,8 +394,8 @@ F(x) = f(x) + \mathcal{N}(\sigma^2)\\
 <h2>Vector-Valued Functions and their Sensitivities<a class="headerlink" href="#vector-valued-functions-and-their-sensitivities" title="Permalink to this headline">¶</a></h2>
 <p>So far, we have only considered real-valued functions (i.e. the function’s output is always a single real number). Such functions are of the form <span class="math notranslate nohighlight">\(f : D \rightarrow \mathbb{R}\)</span>. Both the Laplace and Gaussian mechanism, however, can be extended to <em>vector-valued</em> functions of the form <span class="math notranslate nohighlight">\(f : D \rightarrow \mathbb{R}^k\)</span>, which return vectors of real numbers. We can think of histograms as vector-valued functions, which return a vector whose elements consist of histogram bin counts.</p>
 <p>We saw earlier that the <em>sensitivity</em> of a function is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-65e2e53b-fbed-4a5d-beca-e4a82b7b7522">
-<span class="eqno">(8)<a class="headerlink" href="#equation-65e2e53b-fbed-4a5d-beca-e4a82b7b7522" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1882be5d-24df-46aa-8b9d-72def5d1679f">
+<span class="eqno">(8)<a class="headerlink" href="#equation-1882be5d-24df-46aa-8b9d-72def5d1679f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 GS(f) = \max_{d(x,x') \leq 1} \lvert f(x) - f(x') \rvert
 \end{align}\]</div>
 <p>How do we define sensitivity for vector-valued functions?</p>
@@ -394,14 +409,14 @@ GS(f) = \max_{d(x,x') \leq 1} \lvert f(x) - f(x') \rvert
 <div class="section" id="l1-and-l2-sensitivities">
 <h3>L1 and L2 Sensitivities<a class="headerlink" href="#l1-and-l2-sensitivities" title="Permalink to this headline">¶</a></h3>
 <p>The <span class="math notranslate nohighlight">\(L1\)</span> sensitivity of a vector-valued function <span class="math notranslate nohighlight">\(f\)</span> is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6868bc1a-f8ff-42ff-bf91-bd33fa7306df">
-<span class="eqno">(9)<a class="headerlink" href="#equation-6868bc1a-f8ff-42ff-bf91-bd33fa7306df" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f63be818-5d29-43fb-8708-7e038c55c832">
+<span class="eqno">(9)<a class="headerlink" href="#equation-f63be818-5d29-43fb-8708-7e038c55c832" title="Permalink to this equation">¶</a></span>\[\begin{align}
 GS(f) = \max_{d(x,x') \leq 1} \lVert f(x) - f(x') \rVert_1
 \end{align}\]</div>
 <p>This is equal to the sum of the <em>elementwise</em> sensitivities. For example, if we define a vector-valued function <span class="math notranslate nohighlight">\(f\)</span> that returns a length-<span class="math notranslate nohighlight">\(k\)</span> vector of 1-sensitive results, then the <span class="math notranslate nohighlight">\(L1\)</span> sensitivity of <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>Similarly, the <span class="math notranslate nohighlight">\(L2\)</span> sensitivity of a vector-valued function <span class="math notranslate nohighlight">\(f\)</span> is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dcccc208-f26b-4c04-ac45-6450713c95c7">
-<span class="eqno">(10)<a class="headerlink" href="#equation-dcccc208-f26b-4c04-ac45-6450713c95c7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-13ec8132-3ca1-4ae2-8c41-473ed64d1ac1">
+<span class="eqno">(10)<a class="headerlink" href="#equation-13ec8132-3ca1-4ae2-8c41-473ed64d1ac1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 GS_2(f) = \max_{d(x,x') \leq 1} \lVert f(x) - f(x') \rVert_2
 \end{align}\]</div>
 <p>Using the same example as above, a vector-valued function <span class="math notranslate nohighlight">\(f\)</span> returning a length-<span class="math notranslate nohighlight">\(k\)</span> vector of 1-sensitive results has <span class="math notranslate nohighlight">\(L2\)</span> sensitivity of <span class="math notranslate nohighlight">\(\sqrt{k}\)</span>. For long vectors, the <span class="math notranslate nohighlight">\(L2\)</span> sensitivity will obviously be much lower than the <span class="math notranslate nohighlight">\(L1\)</span> sensitivity! For some applications, like machine learning algorithms (which sometimes return vectors with thousands of elements), <span class="math notranslate nohighlight">\(L2\)</span> sensitivity is <em>significantly</em> lower than <span class="math notranslate nohighlight">\(L1\)</span> sensitivity.</p>
@@ -419,8 +434,8 @@ GS_2(f) = \max_{d(x,x') \leq 1} \lVert f(x) - f(x') \rVert_2
 <h2>The Catastrophe Mechanism<a class="headerlink" href="#the-catastrophe-mechanism" title="Permalink to this headline">¶</a></h2>
 <p>The definition of <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differential privacy says that a mechanism which satisfies the definition must “behave well” with probability <span class="math notranslate nohighlight">\(1-\delta\)</span>. That means that with probability <span class="math notranslate nohighlight">\(\delta\)</span>, the mechanism can do anything at all. This “failure probability” is concerning, because mechanisms which satisfy the relaxed definition may (with low probability) result in very bad outcomes.</p>
 <p>Consider the following mechanism, which we will call the <em>catastrophe mechanism</em>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-129c9b40-8782-4b2e-8fb9-6fbc33782d9a">
-<span class="eqno">(11)<a class="headerlink" href="#equation-129c9b40-8782-4b2e-8fb9-6fbc33782d9a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e1104f3c-d9fa-4f14-8e7d-5d88025bf7a3">
+<span class="eqno">(11)<a class="headerlink" href="#equation-e1104f3c-d9fa-4f14-8e7d-5d88025bf7a3" title="Permalink to this equation">¶</a></span>\[\begin{align}
 F(q, x) =\;&amp; \text{Sample a number $r$ from the uniform distribution between 0 and 1}\\
 &amp;\text{If } r &lt; \delta, \text{return } x\\
 &amp;\text{Otherwise, return } q(x) + \text{Lap}(s/\epsilon), \text{where $s$ is the sensitivity of $q$}\\
@@ -450,7 +465,7 @@ F(q, x) =\;&amp; \text{Sample a number $r$ from the uniform distribution between
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.991918441742227
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.855272489699626
 </pre></div>
 </div>
 </div>
@@ -462,13 +477,13 @@ F(q, x) =\;&amp; \text{Sample a number $r$ from the uniform distribution between
 <li><p>If each mechanism <span class="math notranslate nohighlight">\(m_i\)</span> in a <span class="math notranslate nohighlight">\(k\)</span>-fold adaptive composition <span class="math notranslate nohighlight">\(m_1, \dots, m_k\)</span> satisfies <span class="math notranslate nohighlight">\(\epsilon\)</span>-differential privacy</p></li>
 <li><p>Then for any <span class="math notranslate nohighlight">\(\delta \geq 0\)</span>, the entire <span class="math notranslate nohighlight">\(k\)</span>-fold adaptive composition satisfies <span class="math notranslate nohighlight">\((\epsilon', \delta')\)</span>-differential privacy, where:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8a3c976b-a6fd-4995-b499-08f4fb05f15b">
-<span class="eqno">(12)<a class="headerlink" href="#equation-8a3c976b-a6fd-4995-b499-08f4fb05f15b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9cec72b8-e977-4a0e-989c-739d3bcb98ee">
+<span class="eqno">(12)<a class="headerlink" href="#equation-9cec72b8-e977-4a0e-989c-739d3bcb98ee" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon' = 2\epsilon \sqrt{2k \log(1/\delta')}
 \end{align}\]</div>
 <p>Plugging in <span class="math notranslate nohighlight">\(\epsilon = 1\)</span> from the example above, and setting <span class="math notranslate nohighlight">\(\delta' = 10^{-5}\)</span>, we get:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cf8e93d8-db2a-4e79-91d5-21e7d146ed7c">
-<span class="eqno">(13)<a class="headerlink" href="#equation-cf8e93d8-db2a-4e79-91d5-21e7d146ed7c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-edad8e3a-9d71-41fc-a50c-5b44a1200952">
+<span class="eqno">(13)<a class="headerlink" href="#equation-edad8e3a-9d71-41fc-a50c-5b44a1200952" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon' =&amp; 2 \sqrt{1000 \log(100000)}\\
 \approx&amp; 214.59
 \end{align}\]</div>
@@ -493,7 +508,7 @@ F(q, x) =\;&amp; \text{Sample a number $r$ from the uniform distribution between
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ch6_11_0.png" src="../_images/ch6_11_0.png" />
+<img alt="../_images/ch6_12_0.png" src="../_images/ch6_12_0.png" />
 </div>
 </div>
 <p>Standard sequential composition, it turns out, beats advanced composition for <span class="math notranslate nohighlight">\(k\)</span> smaller than about 70. Thus, advanced composition is only really useful when <span class="math notranslate nohighlight">\(k\)</span> is large (e.g. more than 100). When <span class="math notranslate nohighlight">\(k\)</span> is very large, though, advanced composition can make a <em>big</em> difference.</p>
@@ -506,7 +521,7 @@ F(q, x) =\;&amp; \text{Sample a number $r$ from the uniform distribution between
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ch6_13_0.png" src="../_images/ch6_13_0.png" />
+<img alt="../_images/ch6_14_0.png" src="../_images/ch6_14_0.png" />
 </div>
 </div>
 </div>
@@ -517,8 +532,8 @@ F(q, x) =\;&amp; \text{Sample a number $r$ from the uniform distribution between
 <li><p>If each mechanism <span class="math notranslate nohighlight">\(m_i\)</span> in a <span class="math notranslate nohighlight">\(k\)</span>-fold adaptive composition <span class="math notranslate nohighlight">\(m_1, \dots, m_k\)</span> satisfies <span class="math notranslate nohighlight">\((\epsilon, \delta)\)</span>-differential privacy</p></li>
 <li><p>Then for any <span class="math notranslate nohighlight">\(\delta' \geq 0\)</span>, the entire <span class="math notranslate nohighlight">\(k\)</span>-fold adaptive composition satisfies <span class="math notranslate nohighlight">\((\epsilon', k\delta + \delta')\)</span>-differential privacy, where:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-cb457b4f-00ad-4e1c-95c4-c8d9f4c39276">
-<span class="eqno">(14)<a class="headerlink" href="#equation-cb457b4f-00ad-4e1c-95c4-c8d9f4c39276" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-922e121e-550b-406b-8299-979d8153b28a">
+<span class="eqno">(14)<a class="headerlink" href="#equation-922e121e-550b-406b-8299-979d8153b28a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon' = 2\epsilon \sqrt{2k \log(1/\delta')}
 \end{align}\]</div>
 <p>The only difference is in the failure parameter <span class="math notranslate nohighlight">\(\delta\)</span> for the composed mechanism, where we have an additional <span class="math notranslate nohighlight">\(k\delta\)</span> term. When the mechanisms being composed satisfy pure <span class="math notranslate nohighlight">\(\epsilon\)</span>-differential privacy, then <span class="math notranslate nohighlight">\(\delta = k\delta = 0\)</span>, and we get the same result as the statement above.</p>

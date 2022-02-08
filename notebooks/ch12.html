@@ -369,22 +369,12 @@ training set containing 80% of the examples, and a testing set containing
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span><span class="n">y_train</span><span class="p">[:</span><span class="mi">1000</span><span class="p">])</span>
 <span class="n">model</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jnear/anaconda3/envs/book/lib/python3.6/site-packages/sklearn/linear_model/_logistic.py:764: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression()
 </pre></div>
 </div>
@@ -415,20 +405,20 @@ classified.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8447589562140646
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8243034055727554
 </pre></div>
 </div>
 </div>
 </div>
-<p>Our model predicts the correct label for 84% of the examples in our test
+<p>Our model predicts the correct label for 82% of the examples in our test
 set. For this dataset, that’s a pretty decent result.</p>
 </div>
 <div class="section" id="what-is-a-model">
 <h2>What is a Model?<a class="headerlink" href="#what-is-a-model" title="Permalink to this headline">¶</a></h2>
 <p>What exactly <em>is</em> a model? How does it encode the information it uses to make predictions?</p>
 <p>There are many different kinds of models, but the ones we’ll explore here are <em>linear models</em>. For an unlabeled example with a <span class="math notranslate nohighlight">\(k\)</span>-dimensional feature vector <span class="math notranslate nohighlight">\(x_1, \dots, x_k\)</span>, a linear model predicts a label by first calculating the quantity:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74b16489-88af-444c-8b23-c7d700f27488">
-<span class="eqno">(33)<a class="headerlink" href="#equation-74b16489-88af-444c-8b23-c7d700f27488" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-70d205b1-2346-4199-8d74-2233c87891a8">
+<span class="eqno">(33)<a class="headerlink" href="#equation-70d205b1-2346-4199-8d74-2233c87891a8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 w_1 x_1 + \dots + w_k x_k + bias
 \end{align}\]</div>
 <p>and then taking the sign of it (i.e. if the quantity above is negative, we predict the label -1; if it’s positive, we predict 1).</p>
@@ -441,33 +431,33 @@ w_1 x_1 + \dots + w_k x_k + bias
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-4.687494808296503,
- array([ 4.78151402e-01, -1.79946560e-01, -3.40197349e-02,  6.84333672e-02,
-        -5.91019524e-01, -3.66108816e-01, -1.06083809e+00, -6.69743294e-01,
-        -6.36890752e-01, -4.60617087e-01, -5.10608667e-01, -3.97831947e-01,
-        -7.57649836e-01, -7.81272015e-01,  6.35777397e-02,  1.18068922e-01,
-         5.10750239e-01,  1.00307253e+00, -1.12279697e-01,  7.38197172e-01,
-        -1.18445857e+00,  1.28199942e+00,  1.10337885e-01, -8.97895478e-01,
-         1.50203742e+00,  1.25195060e+00, -5.83470231e-01, -1.31379638e+00,
-        -8.89744944e-01, -7.54428949e-01, -5.67430807e-02,  5.14509637e-02,
-        -8.09102276e-04,  7.21854816e-01, -8.96542996e-01, -6.94307624e-01,
-        -3.23897853e-01, -9.41105845e-01, -1.09690696e+00,  4.72871112e-01,
-         4.76952664e-01,  2.21555807e-01,  5.09558194e-01, -1.29278056e-01,
-        -3.74282557e-01,  1.79888307e-03, -7.74198378e-01, -1.05095873e+00,
-        -1.90659465e-01,  7.02952290e-01, -5.02465565e-01, -4.51128322e-02,
-        -4.88109602e-01, -4.18059124e-01, -2.31600833e-01, -1.17527069e+00,
-        -5.10077268e-01,  8.94580565e-01,  6.12561880e-01, -2.84251847e-01,
-        -1.27129514e+00,  1.13972192e-01, -4.79608688e-01, -2.56511008e-01,
-        -1.84742616e-01,  6.39721203e-01,  8.82889803e-01,  1.58593881e-02,
-         4.91341902e-02,  5.38276653e-02,  4.10230750e-01, -1.65001343e-02,
-         7.53336836e-02, -2.71862104e-01,  5.79575869e-01,  1.69530872e-02,
-         2.56130094e-01,  7.50868301e-01,  7.69366256e-01,  2.66356240e-01,
-        -8.56150529e-02, -7.43867191e-01, -5.85226442e-01, -3.65805377e-01,
-        -3.50569198e-01, -5.70995791e-01,  2.68340650e-01,  3.62045343e-02,
-         3.74297699e-01, -2.17805065e-01, -9.50762561e-01, -6.53157410e-01,
-        -1.22539620e-01, -6.43291000e-01, -4.87931223e-01,  3.02749214e-01,
-        -9.45920882e-01,  4.33957129e-01,  2.26093232e+00,  1.02666008e+00,
-         1.99440344e+00,  1.86494843e+01,  2.57234729e+00,  2.74280072e+00]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-5.3461677503049545,
+ array([ 3.76035057e-01, -2.55358856e-01, -3.21341426e-02,  3.74545737e-01,
+        -6.85885223e-01,  3.91875239e-01, -1.69476241e-01, -7.41793527e-02,
+        -5.76496538e-01,  3.94976503e-01, -3.41457312e-01, -6.24912317e-01,
+        -6.05605602e-01, -4.56928100e-01, -5.19167009e-01, -1.05743009e-01,
+         8.19586633e-01,  9.96762702e-01, -3.09342985e-01,  6.57277160e-01,
+        -1.06436104e-01,  7.71287796e-01,  7.99791034e-02,  1.43803702e-01,
+        -1.01006564e-01,  1.59416785e+00, -5.06233997e-02, -5.78477239e-01,
+        -3.72601413e-01, -6.35661364e-01, -1.02810175e-01,  0.00000000e+00,
+        -1.35478173e-01,  4.36864993e-01, -3.42554362e-01, -1.32819675e-01,
+        -2.00200285e-01, -1.53919241e+00,  6.44831702e-02,  7.17836796e-01,
+         3.80039408e-01,  4.25898498e-02,  8.81653483e-01, -7.08110462e-02,
+         6.10385977e-02,  8.94590966e-02,  6.93679716e-01, -1.30382712e+00,
+        -6.55878656e-01,  1.11512993e+00,  3.78012650e-01, -4.28231712e-02,
+        -3.72812689e-01,  2.41180415e-01, -2.03955636e-01, -3.07042908e-01,
+         3.06644477e-01,  4.31360344e-01,  5.31199745e-01, -6.89615763e-02,
+         4.66366585e-01, -5.81829004e-01, -2.21952424e-01, -2.39529124e-01,
+        -1.40562769e-03,  7.26045748e-01,  2.46167426e-01, -6.08617054e-01,
+         0.00000000e+00, -9.02427102e-02, -3.54430134e-03,  0.00000000e+00,
+         0.00000000e+00, -1.29034794e-01,  5.90856998e-01, -5.15912614e-01,
+         0.00000000e+00, -5.42096249e-03,  7.28556009e-01, -5.15261422e-02,
+         2.30704112e-01, -1.61821068e-01, -6.60183260e-01, -1.01170807e-01,
+        -2.52337853e-01, -5.77230791e-02, -1.45064565e-01, -3.09985224e-01,
+         0.00000000e+00, -3.31415590e-02,  0.00000000e+00, -1.38495395e-01,
+         0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  4.26243747e-01,
+         0.00000000e+00,  0.00000000e+00,  1.72867533e+00,  7.37281346e-02,
+         1.83154145e+00,  2.40009511e+00,  1.46921214e+00,  1.96856497e+00]))
 </pre></div>
 </div>
 </div>
@@ -486,7 +476,7 @@ w_1 x_1 + \dots + w_k x_k + bias
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8447589562140646
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8243034055727554
 </pre></div>
 </div>
 </div>
@@ -768,13 +758,13 @@ Testing loss: 0.4723742456095848
 <div class="section" id="gradient-clipping">
 <h3>Gradient Clipping<a class="headerlink" href="#gradient-clipping" title="Permalink to this headline">¶</a></h3>
 <p>Recall that when we implemented sample and aggregate, we enforced a desired sensitivity on a function <span class="math notranslate nohighlight">\(f\)</span> with unknown sensitivity by clipping its output. The sensitivity of <span class="math notranslate nohighlight">\(f\)</span> was:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d075061e-a656-443f-a6fe-c4549892a2b8">
-<span class="eqno">(34)<a class="headerlink" href="#equation-d075061e-a656-443f-a6fe-c4549892a2b8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1ebf6717-2492-458c-ac82-c98944272893">
+<span class="eqno">(34)<a class="headerlink" href="#equation-1ebf6717-2492-458c-ac82-c98944272893" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lvert f(x) - f(x') \rvert
 \end{align}\]</div>
 <p>After clipping with parameter <span class="math notranslate nohighlight">\(b\)</span>, this becomes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4d7c1643-9ba2-46f6-b0e3-ce8f17545785">
-<span class="eqno">(35)<a class="headerlink" href="#equation-4d7c1643-9ba2-46f6-b0e3-ce8f17545785" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6961d23c-2a39-47be-b8b8-e004e2055d24">
+<span class="eqno">(35)<a class="headerlink" href="#equation-6961d23c-2a39-47be-b8b8-e004e2055d24" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lvert \mathsf{clip}(f(x), b) - \mathsf{clip}(f(x'),b) \rvert
 \end{align}\]</div>
 <p>In the worst case, <span class="math notranslate nohighlight">\(\mathsf{clip}(f(x), b) = b\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{clip}(f(x'),b) = 0\)</span>, so the sensitivity of the clipped result is exactly <span class="math notranslate nohighlight">\(b\)</span> (the value of the clipping parameter).</p>
@@ -793,8 +783,8 @@ Testing loss: 0.4723742456095848
 </div>
 </div>
 <p>Now we’re ready to analyze the sensitivity of the clipped gradient. We denote the gradient as <span class="math notranslate nohighlight">\(\nabla(\theta; X, y)\)</span> (corresponding to <code class="docutils literal notranslate"><span class="pre">gradient</span></code> in our Python code):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f2bae46-13bf-4253-a7e3-98b21cfa3da5">
-<span class="eqno">(36)<a class="headerlink" href="#equation-6f2bae46-13bf-4253-a7e3-98b21cfa3da5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1f0641e0-c67f-4505-9bd6-bf26d845cb9d">
+<span class="eqno">(36)<a class="headerlink" href="#equation-1f0641e0-c67f-4505-9bd6-bf26d845cb9d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lVert \mathsf{L2\_clip}( \nabla (\theta; X, y), b) - \mathsf{L2\_clip}( \nabla (\theta; X', y), 0) \rVert_2
 \end{align}\]</div>
 <p>In the worst case, <span class="math notranslate nohighlight">\(\mathsf{L2\_clip}( \nabla (\theta; X, y), b)\)</span> has L2 norm of <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{L2\_clip}( \nabla (\theta; X', y))\)</span> is all zeros - so that the L2 norm of the difference is equal to <span class="math notranslate nohighlight">\(b\)</span>. Thus, the L2 sensitivity of the clipped gradient is bounded by the clipping parameter <span class="math notranslate nohighlight">\(b\)</span>!</p>
@@ -844,7 +834,7 @@ Testing loss: 0.4723742456095848
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7811808934099955
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7787483414418399
 </pre></div>
 </div>
 </div>
@@ -854,8 +844,8 @@ Testing loss: 0.4723742456095848
 <div class="section" id="sensitivity-of-the-gradient">
 <h3>Sensitivity of the Gradient<a class="headerlink" href="#sensitivity-of-the-gradient" title="Permalink to this headline">¶</a></h3>
 <p>Our previous approach is very general, since it makes no assumptions about the behavior of the gradient. Sometimes, however, we <em>do</em> know something about the behavior of the gradient. In particular, a large class of useful gradient functions (including the gradient of the logistic loss, which we’re using here) are <em>Lipschitz continuous</em> - meaning they have bounded global sensitivity. Formally, it is possible to show that:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61f85c92-e174-4163-92e2-f3377d040480">
-<span class="eqno">(37)<a class="headerlink" href="#equation-61f85c92-e174-4163-92e2-f3377d040480" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7ebe82b9-d49f-4ca4-8ad0-388cf3ebf4e7">
+<span class="eqno">(37)<a class="headerlink" href="#equation-7ebe82b9-d49f-4ca4-8ad0-388cf3ebf4e7" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{If}\; \lVert x_i \rVert_2 \leq b\; \text{then}\; \lVert \nabla(\theta; x_i, y_i) \rVert_2 \leq b
 \end{align}\]</div>
 <p>This fact allows us to clip the values of the <em>training examples</em> (i.e. the <em>inputs</em> to the gradient function), instead of the <em>output</em> of the gradient function, and obtain a bound on the L2 sensitivity of the gradient.</p>
@@ -902,7 +892,7 @@ Testing loss: 0.4723742456095848
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7787483414418399
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7781954887218046
 </pre></div>
 </div>
 </div>
