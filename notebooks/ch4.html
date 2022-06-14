@@ -524,23 +524,23 @@ The bound on privacy cost given by sequential composition is an <em>upper</em> b
   <tbody>
     <tr>
       <th>HS-grad</th>
-      <td>10500.885967</td>
+      <td>10501.269062</td>
     </tr>
     <tr>
       <th>Some-college</th>
-      <td>7292.551577</td>
+      <td>7293.071466</td>
     </tr>
     <tr>
       <th>Bachelors</th>
-      <td>5353.486023</td>
+      <td>5354.310755</td>
     </tr>
     <tr>
       <th>Masters</th>
-      <td>1722.116171</td>
+      <td>1723.889878</td>
     </tr>
     <tr>
       <th>Assoc-voc</th>
-      <td>1382.267404</td>
+      <td>1380.775814</td>
     </tr>
   </tbody>
 </table>
@@ -654,28 +654,28 @@ The bound on privacy cost given by sequential composition is an <em>upper</em> b
   <tbody>
     <tr>
       <th>10th</th>
-      <td>294.317287</td>
-      <td>638.054302</td>
+      <td>292.888612</td>
+      <td>639.643804</td>
     </tr>
     <tr>
       <th>11th</th>
-      <td>432.993021</td>
-      <td>743.482318</td>
+      <td>433.300743</td>
+      <td>742.820688</td>
     </tr>
     <tr>
       <th>12th</th>
-      <td>144.250460</td>
-      <td>290.349697</td>
+      <td>144.078715</td>
+      <td>287.833134</td>
     </tr>
     <tr>
       <th>1st-4th</th>
-      <td>46.285378</td>
-      <td>121.121333</td>
+      <td>46.432707</td>
+      <td>122.346940</td>
     </tr>
     <tr>
       <th>5th-6th</th>
-      <td>81.186775</td>
-      <td>250.324783</td>
+      <td>83.240713</td>
+      <td>251.016736</td>
     </tr>
   </tbody>
 </table>
@@ -694,7 +694,7 @@ The bound on privacy cost given by sequential composition is an <em>upper</em> b
 <li><p>Then for any (deterministic or randomized) function <span class="math notranslate nohighlight">\(g\)</span>, <span class="math notranslate nohighlight">\(g(F(X))\)</span> satisfies <span class="math notranslate nohighlight">\(\epsilon\)</span>-differential privacy</p></li>
 </ul>
 <p>The post-processing property means that it’s always safe to perform arbitrary computations on the output of a differentially private mechanism - there’s no danger of reversing the privacy protection the mechanism has provided. In particular, it’s fine to perform post-processing that might reduce the noise or improve the signal in the mechanism’s output (e.g. replacing negative results with zeros, for queries that shouldn’t return negative results). In fact, many sophisticated differentially private algorithms make use of post-processing to reduce noise and improve the accuracy of their results.</p>
-<p>The other implication of the post-processing property is that differential privacy provides resistance against privacy attacks based on auxiliary information. For example, the function <span class="math notranslate nohighlight">\(g\)</span> might contain auxiliary information about elements of the dataset, and attempt to perform a linking attack using this information. The post-processing property says that such an attack is limited in its effectiveness by the privacy parameter <span class="math notranslate nohighlight">\(\epsilon\)</span>, regardless of the auxiliary information contained in <span class="math notranslate nohighlight">\(g\)</span>.</p>
+<p>The other implication of the post-processing property is that differential privacy provides resistance against privacy attacks based on auxiliary information. For example, the function <span class="math notranslate nohighlight">\(g\)</span> might contain auxiliary information about elements of the dataset, and attempt to perform a linkage attack using this information. The post-processing property says that such an attack is limited in its effectiveness by the privacy parameter <span class="math notranslate nohighlight">\(\epsilon\)</span>, regardless of the auxiliary information contained in <span class="math notranslate nohighlight">\(g\)</span>.</p>
 </div>
 </div>
 
